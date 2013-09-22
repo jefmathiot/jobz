@@ -27,6 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0.7"
 
   spec.add_dependency "activesupport", ">= 3.0.0"
-  spec.add_dependency "resque", "~> 1.24.1"
+  # Cannot move to 1.25.0 as resque-scheduler requires < 1.25
+  # See https://rubygems.org/gems/resque-scheduler
+  spec.add_dependency "resque", ">= 1.20.0"
   spec.add_dependency "resque-scheduler", "~> 2.1.0"
 end
