@@ -3,6 +3,9 @@
 A simple queuing system based on resque & resque-scheduler.
 
 [![Build Status](https://travis-ci.org/jefmathiot/jobz.png)](https://travis-ci.org/jefmathiot/jobz)
+[![Dependency Status](https://gemnasium.com/jefmathiot/jobz.png)](https://gemnasium.com/jefmathiot/jobz)
+[![Coverage Status](https://coveralls.io/repos/jefmathiot/jobz/badge.png?branch=master)](https://coveralls.io/r/jefmathiot/jobz)
+[![Code Climate](https://codeclimate.com/github/jefmathiot/jobz.png)](https://codeclimate.com/github/jefmathiot/jobz)
 
 ## Installation
 
