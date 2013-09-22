@@ -9,6 +9,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.start
 
 require 'jobz'
+require 'minitest'
 require 'minitest/spec'
 require 'minitest/autorun'
 require 'minitest/pride'
