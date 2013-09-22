@@ -21,7 +21,9 @@ describe Jobz::Config do
         end
 
         it "should provide adapter instances" do
-            raise "Not implemented"
+            @config.adapter = :resque
+            @config.register_adapter :resque, Jobz::Adapters::ResqueAdapter
+            @config.adapter_instance.must_be_instance_of Jobz::Adapters::ResqueAdapter
         end
 
     end

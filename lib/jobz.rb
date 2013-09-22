@@ -1,5 +1,7 @@
 require "jobz/version"
 
+require "active_support"
+
 require "jobz/async"
 require "jobz/config"
 require "jobz/metadata"

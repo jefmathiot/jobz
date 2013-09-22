@@ -1,8 +1,10 @@
+require 'active_support/core_ext'
+
 module Jobz
     module Async
         class Job
             class << self
-                def perform( metadata, *args )
+                def perform(metadata, *args)
                     metadata = metadata.with_indifferent_access
                     object = resolve(metadata)
                     object.send metadata[:method], *args
