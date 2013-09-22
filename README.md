@@ -2,6 +2,8 @@
 
 A simple queuing system based on resque & resque-scheduler.
 
+[![Build Status](https://travis-ci.org/[jefmathiot]/[jobz].png)](https://travis-ci.org/[jefmathiot]/[jobz])
+
 ## Installation
 
 Add this line to your application's Gemfile:
