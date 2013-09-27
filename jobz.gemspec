@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "minitest", "~> 5.0.7"
+  spec.add_development_dependency "timecop"
 
   spec.add_dependency "activesupport", ">= 3.0.0"
   # Cannot move to 1.25.0 as resque-scheduler requires < 1.25
