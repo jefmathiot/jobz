@@ -16,3 +16,4 @@ if defined?(Rails::Railtie)
 end
 
 require 'jobz/adapters/resque_adapter'
+require 'jobz/adapters/inline_adapter'

@@ -1,5 +1,4 @@
 require 'resque_scheduler'
-require 'jobz/adapters/adapter'
 
 module Jobz
     module Adapters

@@ -1,3 +1,5 @@
+require 'jobz/adapters/adapter'
+
 module Jobz
     module Adapters
         def register_adapter(name, klazz)
