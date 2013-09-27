@@ -39,9 +39,9 @@ module Jobz
                     # A specific handler has been found, delegating metadata
                     @subject.class.jobz.metadata( @subject ).merge(method: method_sym)
                 else
+                    raise unless @subject.is_a?(Class)
                     # No specific handler for this kind of subject: we assume it is a class
-                    # TODO Raise if its not...
-                    {class_name: @subject, method: method_sym}
+                    {class_name: @subject.name, method: method_sym}
                 end
             end
 
