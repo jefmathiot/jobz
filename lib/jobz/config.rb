@@ -22,7 +22,7 @@ module Jobz
             end
 
             def adapter_instance
-                adapter_for(adapter)
+                self.inline ? adapter_for(:inline) : adapter_for(adapter)
             end
 
             private

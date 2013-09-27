@@ -20,10 +20,23 @@ describe Jobz::Config do
             @config.inline.must_equal true
         end
 
-        it "should provide adapter instances" do
-            @config.adapter = :resque
-            @config.register_adapter :resque, Jobz::Adapters::ResqueAdapter
-            @config.adapter_instance.must_be_instance_of Jobz::Adapters::ResqueAdapter
+        describe 'with several adapters' do
+            before do
+                @config.register_adapter :resque, Jobz::Adapters::ResqueAdapter
+                @config.register_adapter :inline, Jobz::Adapters::InlineAdapter
+            end
+
+            it "should provide adapter instance" do
+                @config.adapter = :resque
+                @config.adapter_instance.must_be_instance_of Jobz::Adapters::ResqueAdapter
+            end
+
+            it "should override settings with inline adapter" do
+                @config.inline = true
+                @config.adapter = :resque
+                @config.adapter_instance.must_be_instance_of Jobz::Adapters::InlineAdapter
+            end
+
         end
 
     end
