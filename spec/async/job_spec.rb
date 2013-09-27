@@ -18,11 +18,11 @@ describe Jobz::Async::Job do
         JobSubject.expects(:respond_to?).with(:jobz).returns(true)
         JobSubject.expects(:jobz).returns(jobz)
         jobz.expects(:resolve).with(JobSubject, {class_name: "JobSubject"}).returns("Value")
-        Jobz::Async::Job.resolve( {class_name: "JobSubject"} ).must_equal "Value"
+        Jobz::Async::Job.send(:resolve, {class_name: "JobSubject"} ).must_equal "Value"
     end
     
     it 'should resolve to class unless subject responds to jobz' do
-        Jobz::Async::Job.resolve( {class_name: "Object"} ).must_equal Object
+        Jobz::Async::Job.send(:resolve, {class_name: "Object"} ).must_equal Object
     end
 
 end

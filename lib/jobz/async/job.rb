@@ -10,6 +10,7 @@ module Jobz
                     object.send metadata[:method], *args
                 end
 
+                private
                 def resolve(metadata)
                     klazz = metadata[:class_name].constantize
                     if klazz.respond_to?(:jobz)
