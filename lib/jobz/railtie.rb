@@ -9,6 +9,9 @@ module Jobz
             ActiveSupport.on_load(:active_record) do
                 Jobz.deferrable!( ActiveRecord::Base, ::Jobz::Metadata::ActiveRecord )
             end
+            ActiveSupport.on_load(:mongoid) do
+                Jobz.deferrable!( Mongoid::Document, ::Jobz::Metadata::Mongoid )
+            end
         end
 
     end
