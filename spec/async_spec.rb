@@ -16,7 +16,10 @@ describe Jobz::Async do
     end
 
     module CustomHandler
-        def jobz ; end
+        extend ActiveSupport::Concern
+        module ClassMethods
+            def jobz ; end
+        end
     end
 
     it 'should mark a class as deferrable with a custom metadata handler' do

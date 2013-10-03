@@ -1,8 +1,12 @@
 module Jobz
     module Metadata
         module Mongoid
-            def jobz
-                MongoidHandler.new
+            extend ActiveSupport::Concern
+            
+            module ClassMethods
+                def jobz
+                    MongoidHandler.new
+                end
             end
 
             class MongoidHandler < Handler
@@ -14,6 +18,7 @@ module Jobz
                     klazz.find(metadata[:document_id])
                 end
             end
+
         end
     end
 end

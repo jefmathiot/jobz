@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Jobz::Metadata::Mongoid do
     
     subject do
-        Class.new.tap{ |klazz| klazz.send(:extend, Jobz::Metadata::Mongoid) }
+        Class.new.tap{ |klazz| klazz.send(:include, Jobz::Metadata::Mongoid) }
     end
 
     it 'should return an handler for active record' do

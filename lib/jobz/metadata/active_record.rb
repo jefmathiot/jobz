@@ -1,8 +1,12 @@
 module Jobz
     module Metadata
         module ActiveRecord
-            def jobz
-                ActiveRecordHandler.new
+            extend ActiveSupport::Concern
+
+            module ClassMethods
+                def jobz
+                    ActiveRecordHandler.new
+                end
             end
 
             class ActiveRecordHandler < Handler
@@ -14,6 +18,7 @@ module Jobz
                     klazz.find(metadata[:primary_key])
                 end
             end
+
         end
     end
 end

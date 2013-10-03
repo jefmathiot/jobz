@@ -7,7 +7,7 @@ module Jobz
     module Async
         def deferrable!( klazz, metadata = nil )
             klazz.send :include, Methods
-            klazz.send :extend, metadata if metadata
+            klazz.send :include, metadata if metadata
         end
     end
 end
