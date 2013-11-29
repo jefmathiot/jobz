@@ -7,15 +7,15 @@ describe Jobz::Metadata::ActiveRecord do
     end
 
     it 'should return an handler for active record' do
-        subject.jobz.must_be_instance_of Jobz::Metadata::ActiveRecord::ActiveRecordHandler
+        subject.jobz.must_be_instance_of Jobz::Metadata::Handler
     end
 end
 
 
-describe Jobz::Metadata::ActiveRecord::ActiveRecordHandler do
+describe Jobz::Metadata::Handler do
     
     subject do
-        Jobz::Metadata::ActiveRecord::ActiveRecordHandler.new
+        Jobz::Metadata::Handler.new :primary_key
     end
 
     it 'should add the primary key to the metadata' do

@@ -5,20 +5,9 @@ module Jobz
 
             module ClassMethods
                 def jobz
-                    ActiveRecordHandler.new
+                    Handler.new :primary_key
                 end
             end
-
-            class ActiveRecordHandler < Handler
-                def metadata(subject)
-                    super.merge( primary_key: subject.id )
-                end
-
-                def resolve(klazz, metadata)
-                    klazz.find(metadata[:primary_key])
-                end
-            end
-
         end
     end
 end

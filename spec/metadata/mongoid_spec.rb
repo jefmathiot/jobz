@@ -7,15 +7,15 @@ describe Jobz::Metadata::Mongoid do
     end
 
     it 'should return an handler for active record' do
-        subject.jobz.must_be_instance_of Jobz::Metadata::Mongoid::MongoidHandler
+        subject.jobz.must_be_instance_of Jobz::Metadata::Handler
     end
 end
 
 
-describe Jobz::Metadata::Mongoid::MongoidHandler do
+describe Jobz::Metadata::Handler do
     
     subject do
-        Jobz::Metadata::Mongoid::MongoidHandler.new
+        Jobz::Metadata::Handler.new :document_id
     end
 
     it 'should add the document id to the metadata' do
