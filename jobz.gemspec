@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   # Cannot move to 1.25.0 as resque-scheduler requires < 1.25
   # See https://rubygems.org/gems/resque-scheduler
   spec.add_dependency "resque", ">= 1.20.0"
-  spec.add_dependency "resque-scheduler", "~> 2.1.0"
+  spec.add_dependency "resque-scheduler", "~> 2.3.1"
 end
