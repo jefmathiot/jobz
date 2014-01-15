@@ -14,9 +14,9 @@ describe Jobz::Config do
         end
 
         it "should allow attributes override" do
-            @config.adapter = :whatever
+            @config.adapter :whatever
             @config.adapter.must_equal :whatever
-            @config.inline = true
+            @config.inline true
             @config.inline.must_equal true
         end
 
@@ -27,13 +27,13 @@ describe Jobz::Config do
             end
 
             it "should provide adapter instance" do
-                @config.adapter = :resque
+                @config.adapter :resque
                 @config.adapter_instance.must_be_instance_of Jobz::Adapters::ResqueAdapter
             end
 
             it "should override settings with inline adapter" do
-                @config.inline = true
-                @config.adapter = :resque
+                @config.inline true
+                @config.adapter :resque
                 @config.adapter_instance.must_be_instance_of Jobz::Adapters::InlineAdapter
             end
 
@@ -41,18 +41,25 @@ describe Jobz::Config do
 
     end
 
-    before do
-        klazz = Class.new
-        klazz.send :include, Jobz::Config
-        @helper = klazz.new
-    end
+    describe 'with an instance' do
 
-    it "should return a singleton configuration" do
-        config = @helper.config
-        @helper.config.must_be_same_as config
-    end
+        before do
+            klazz = Class.new
+            klazz.send :include, Jobz::Config
+            @helper = klazz.new
+        end
 
-    it "should yield to block if any" do
+        it "should return a singleton configuration" do
+            config = @helper.config
+            @helper.config.must_be_same_as config
+        end
+
+        it "should yield to block if any" do
+        config = @helper.config do
+            inline true
+        end
+            config.inline.must_equal true
+        end
 
     end
 

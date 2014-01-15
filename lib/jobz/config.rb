@@ -3,9 +3,9 @@ require 'jobz/adapters'
 module Jobz
     module Config
 
-        def config
+        def config(&block)
             @config ||= Configuration.new
-            yield @config if block_given?
+            @config.instance_eval &block if block_given?
             @config
         end
 
@@ -13,10 +13,10 @@ module Jobz
             include Adapters
 
             [:adapter, :inline].each do |attribute|
-                attr_writer attribute
                 class_eval <<-EOF
-                def #{attribute}
-                    @#{attribute} ||= defaults[:#{attribute}]
+                def #{attribute}(value=nil)
+                    @#{attribute} = value if value
+                    @#{attribute} || defaults[:#{attribute}]
                 end
                 EOF
             end
@@ -27,7 +27,7 @@ module Jobz
 
             private
             def defaults
-                @defaults||={adapter: :resque, inline: false}
+                @defaults ||= {adapter: :resque, inline: false}
             end
         end
 
