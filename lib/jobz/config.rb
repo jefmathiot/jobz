@@ -3,19 +3,19 @@ require 'jobz/adapters'
 module Jobz
     module Config
 
-        def config(&block)
+        def config
             @config ||= Configuration.new
-            @config.instance_eval &block if block_given?
-            @config
         end
 
         class Configuration
             include Adapters
 
             [:adapter, :inline].each do |attribute|
+                
+                attr_writer attribute
+
                 class_eval <<-EOF
                 def #{attribute}(value=nil)
-                    @#{attribute} = value if value
                     @#{attribute} || defaults[:#{attribute}]
                 end
                 EOF
