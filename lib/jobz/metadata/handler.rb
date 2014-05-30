@@ -11,7 +11,7 @@ module Jobz
             end
 
             def resolve(klazz, metadata)
-                klazz.find(metadata[@primary_key])
+              klazz.unscoped.find(metadata[@primary_key])
             end
 
         end
