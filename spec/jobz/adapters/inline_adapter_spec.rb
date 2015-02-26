@@ -8,14 +8,14 @@ describe Jobz::Adapters::InlineAdapter do
 
     before do
         @job = Object.new
-        @job.expects(:perform).with({key: :value}, 1, 2)
+        @job.expects(:perform).with({key: :value}, '1', '2')
     end
 
-    it 'should pass through enqueue at' do
+    it 'should jsonize args pass through enqueue at' do
         subject.enqueue_at_with_queue(:critical, Time.now, @job, {key: :value}, 1, 2)
     end
 
-    it 'should pass through enqueue to' do
+    it 'should jsonize args pass through enqueue to' do
         subject.enqueue_to(:critical, @job, {key: :value}, 1, 2)
     end
 

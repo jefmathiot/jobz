@@ -10,6 +10,9 @@ module Jobz
             end
 
             def enqueue_to( queue, job, metadata, *args )
+                args.collect! do |arg|
+                    JSON.dump arg
+                end
                 job.perform(metadata, *args)
             end
 
