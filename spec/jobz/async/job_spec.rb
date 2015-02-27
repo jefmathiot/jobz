@@ -6,12 +6,12 @@ describe Jobz::Async::Job do
     class JobSubject
     end
 
-    it 'should perform task' do
+    it 'should perform task with jsonized args' do
         JobSubject.expects(:respond_to?).with(:jobz).returns(false)
         JobSubject.expects(:a_method).with(1, 2)
-        Jobz::Async::Job.perform({class_name: 'JobSubject', method: :a_method}, 1, 2)
+        Jobz::Async::Job.perform({class_name: 'JobSubject', method: :a_method}, '1', '2')
     end
-    
+
     it 'should resolve using handler if subject responds to jobz' do
 
         jobz = Object.new
@@ -20,7 +20,7 @@ describe Jobz::Async::Job do
         jobz.expects(:resolve).with(JobSubject, {class_name: "JobSubject"}).returns("Value")
         Jobz::Async::Job.send(:resolve, {class_name: "JobSubject"} ).must_equal "Value"
     end
-    
+
     it 'should resolve to class unless subject responds to jobz' do
         Jobz::Async::Job.send(:resolve, {class_name: "Object"} ).must_equal Object
     end

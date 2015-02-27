@@ -5,6 +5,9 @@ module Jobz
         class Job
             class << self
                 def perform(metadata, *args)
+                    args.collect! do |arg|
+                        JSON.load arg
+                    end
                     metadata = metadata.with_indifferent_access
                     object = resolve(metadata)
                     object.send metadata[:method], *args
