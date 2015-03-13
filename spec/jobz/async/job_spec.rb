@@ -8,8 +8,8 @@ describe Jobz::Async::Job do
 
     it 'should perform task with jsonized args' do
         JobSubject.expects(:respond_to?).with(:jobz).returns(false)
-        JobSubject.expects(:a_method).with(1, 2)
-        Jobz::Async::Job.perform({class_name: 'JobSubject', method: :a_method}, '1', '2')
+        JobSubject.expects(:a_method).with(1, '2', '2014-10-20')
+        Jobz::Async::Job.perform({class_name: 'JobSubject', method: :a_method}, 1, '2', '2014-10-20')
     end
 
     it 'should resolve using handler if subject responds to jobz' do
