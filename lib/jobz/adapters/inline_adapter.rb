@@ -13,6 +13,9 @@ module Jobz
                 args.collect! do |arg|
                     JSON.dump arg
                 end
+                args.collect! do |arg|
+                    JSON.load arg
+                end
                 job.perform(metadata, *args)
             end
 
