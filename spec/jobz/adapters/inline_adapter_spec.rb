@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Jobz::Adapters::InlineAdapter do
 
     subject do
-        Jobz::Adapters::InlineAdapter.new
+        Jobz::Adapters::InlineAdapter.new({})
     end
 
     before do

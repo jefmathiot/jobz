@@ -10,8 +10,8 @@ module Jobz
         class Configuration
             include Adapters
 
-            [:adapter, :inline].each do |attribute|
-                
+            [:adapter, :inline, :adapter_options].each do |attribute|
+
                 attr_writer attribute
 
                 class_eval <<-EOF
@@ -22,7 +22,8 @@ module Jobz
             end
 
             def adapter_instance
-                self.inline ? adapter_for(:inline) : adapter_for(adapter)
+                return adapter_for(:inline, {}) if inline
+                adapter_for(adapter, adapter_options)
             end
 
             private

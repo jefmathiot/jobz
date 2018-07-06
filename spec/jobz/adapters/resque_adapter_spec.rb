@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Jobz::Adapters::ResqueAdapter do
 
     subject do
-        Jobz::Adapters::ResqueAdapter.new
+        Jobz::Adapters::ResqueAdapter.new({})
     end
 
     it 'should include resque scheduler API' do

@@ -11,8 +11,8 @@ module Jobz
             @adapters ||= {}
         end
 
-        def adapter_for(name)
-            adapters[name].new
+        def adapter_for(name, options)
+            adapters[name].new(options)
         end
     end
 end

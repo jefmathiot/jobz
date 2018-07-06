@@ -9,6 +9,9 @@ module Jobz
 
             register_as :resque
 
+            def initialize(options)
+              self.redis = Redis.new(options || {})
+            end
         end
     end
 end
